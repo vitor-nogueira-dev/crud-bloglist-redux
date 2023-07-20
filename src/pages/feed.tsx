@@ -71,7 +71,43 @@ export default function Pagination({ }) {
             </ul>
             <nav>
                 <ul className="inline-flex -space-x-px text-sm">
-                    {/* pages  */}
+                    <li>
+                        <button
+                            onClick={handlePreviousPage}
+                            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border rounded-l-lg   bg-gray-800 border-gray-700 hover:bg-gray-700 hover:text-white disabled:opacity-50 "
+                            disabled={!pagination?.previous}
+                        >
+                            Previous
+                        </button>
+                    </li>
+                    {getPageNumbers().map((page: number) => (
+                        <li key={page}>
+                            <a
+                                href="#"
+                                onClick={() => {
+                                    const limit = pagination?.limit || 10;
+                                    const offset = (page - 1) * limit;
+                                    dispatch(ACTION_GET_LIST(limit, offset));
+                                    setCurrentPage(page);
+                                }}
+                                className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 ${page === currentPage
+                                    ? "text-white font-bold bg-gray-600 "
+                                    : "hover:bg-gray-100 hover:text-gray-700"
+                                    }`}
+                            >
+                                {page}
+                            </a>
+                        </li>
+                    ))}
+                    <li>
+                        <button
+                            onClick={handleNextPage}
+                            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border rounded-r-lg   bg-gray-800 border-gray-700 hover:bg-gray-700 hover:text-white disabled:opacity-50 "
+                            disabled={!pagination?.next}
+                        >
+                            Next
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
