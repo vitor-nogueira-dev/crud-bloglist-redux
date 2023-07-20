@@ -28,6 +28,17 @@ export default function Pagination({ }) {
         }
     }
 
+    const handlePreviousPage = () => {
+        if (pagination && pagination.previous) {
+            const url = new URL(pagination.previous);
+            const limit = parseInt(url.searchParams.get("limit") || "10", 10);
+            const offset = parseInt(url.searchParams.get("offset") || "0", 10);
+            dispatch(ACTION_GET_LIST(limit, offset));
+            setCurrentPage(currentPage - 1);
+
+        }
+    };
+
     return (
         <div>
             <ul>
