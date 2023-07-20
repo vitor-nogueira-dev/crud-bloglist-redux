@@ -1,10 +1,11 @@
-import { SET_NAME } from "@/actions/constants";
+import { SET_LIST, SET_NAME, SET_PAGINATION } from "@/actions/constants";
 import { IActionReducer } from "@/interfaces/IActionReducer";
 import { IListState } from "@/interfaces/IListState";
 
-const initialState: IListState = {
-    items: [],
+export const initialState: IListState = {
+    list: [],
     name: '',
+    pagination: {},
 };
 
 const listReducer = (state = initialState, action: IActionReducer) => {
@@ -14,7 +15,16 @@ const listReducer = (state = initialState, action: IActionReducer) => {
                 ...state,
                 name: action.payload,
             };
-        case '':
+        case SET_LIST:
+            return {
+                ...state,
+                list: action.payload,
+            };
+        case SET_PAGINATION:
+            return {
+                ...state,
+                pagination: action.payload,
+            };
         default:
             return state;
     }
