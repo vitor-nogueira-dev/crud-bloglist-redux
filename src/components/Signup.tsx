@@ -1,9 +1,21 @@
+import { SET_NAME } from '@/actions/actions'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 type Props = {}
 
 export default function Signup({ }: Props) {
     const [name, setName] = useState('')
+    const dispatch = useDispatch()
+    const router = useRouter()
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault()
+        dispatch(SET_NAME(name))
+        setName('')
+        router.push('/feed')
+    }
     return (
         <section className='bg-[#DDDDDD] h-screen m-auto border flex items-center justify-center'>
             <form className='bg-[#ffffff] lg:w-[500px] h-[205px] rounded-[16px] flex flex-col justify-evenly border border-[#CCCCCC]
@@ -24,6 +36,7 @@ export default function Signup({ }: Props) {
                     <button
                         type="button"
                         disabled={!name}
+                        onClick={handleClick}
                         className={`font-bold w-[111px] h-[32px] ${name ? "bg-[#2a5deb]" : "active:bg-[#2a5deb] bg-[#7695EC]"} rounded-lg text-sm text-center uppercase text-white`}
                     >enter</button>
                 </div>
