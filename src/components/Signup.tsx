@@ -1,18 +1,19 @@
-import { SET_NAME } from '@/actions/actions'
+import { ACTION_SET_NAME } from '@/actions/actions'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { ThunkActionDispatch } from 'redux-thunk'
 
 type Props = {}
 
 export default function Signup({ }: Props) {
     const [name, setName] = useState('')
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() as ThunkActionDispatch<any>
     const router = useRouter()
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
-        dispatch(SET_NAME(name))
+        dispatch(ACTION_SET_NAME(name))
         setName('')
         router.push('/feed')
     }
