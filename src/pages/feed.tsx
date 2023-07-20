@@ -11,11 +11,22 @@ export default function Pagination({ }) {
 
     const dispatch = useDispatch() as ThunkActionDispatch<any>
     const list = useSelector((state: IListState) => state.list);
+    const pagination = useSelector((state: IListState) => state.pagination);
 
     useEffect(() => {
         dispatch(ACTION_GET_LIST(10, 0));
         setCurrentPage(1);
     }, [dispatch]);
+
+    const handleNextPage = () => {
+        if (pagination && pagination.next) {
+            const url = new URL(pagination.next);
+            const limit = parseInt(url.searchParams.get("limit") || "10", 10);
+            const offset = parseInt(url.searchParams.get("offset") || "0", 10);
+            dispatch(ACTION_GET_LIST(limit, offset));
+            setCurrentPage(offset / limit + 1);
+        }
+    }
 
     return (
         <div>
