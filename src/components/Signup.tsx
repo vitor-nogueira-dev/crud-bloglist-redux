@@ -25,7 +25,7 @@ export default function Signup({ }: Props) {
                 <div className="mb-6">
                     <label htmlFor="name" className="block mb-2 text-[16px] font-normal text-[#000000] leading-4">Please enter your username</label>
                     <input
-                        type="name"
+                        type="text"
                         id="name"
                         value={name}
                         onChange={({ target }) => setName(target.value)} className="bg-white border border-[#777777]; text-gray-900 text-sm rounded-lg block w-full p-2.5 outline outline-1 outline-[#777777] placeholder-[#CCCCCC] focus:outline-none focus:border-[#777777]"
