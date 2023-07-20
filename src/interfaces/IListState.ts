@@ -1,5 +1,6 @@
 export
     interface IListState {
-    items: string[];
+    list: string[];
     name: string;
+    pagination: any;
 }
