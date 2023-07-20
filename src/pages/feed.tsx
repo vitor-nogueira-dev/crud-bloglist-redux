@@ -39,6 +39,29 @@ export default function Pagination({ }) {
         }
     };
 
+    const getPageNumbers = useCallback(() => {
+        if (pagination) {
+            const totalPages = Math.ceil(pagination.count / 10);
+            const maxDisplayedPages = 10;
+            const halfDisplayedPages = Math.floor(maxDisplayedPages / 2);
+            let startPage = currentPage - halfDisplayedPages;
+            let endPage = currentPage + halfDisplayedPages;
+
+            if (startPage < 1) {
+                startPage = 1;
+                endPage = maxDisplayedPages;
+            }
+
+            if (endPage > totalPages) {
+                endPage = totalPages;
+                startPage = Math.max(1, endPage - maxDisplayedPages + 1);
+            }
+
+            return Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
+        }
+        return [];
+    }, [currentPage, pagination]);
+
     return (
         <div>
             <ul>
