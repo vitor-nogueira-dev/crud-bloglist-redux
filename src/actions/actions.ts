@@ -66,3 +66,14 @@ export const ACTION_EDIT_POST = (id: number, title: string, content: string) => 
         }
     };
 };
+
+export const ACTION_DELETE_POST = (id: number) => {
+    return async (dispatch: ThunkActionDispatch<any>) => {
+        try {
+            await requestAPI(`${id}/`, 'DELETE');
+            dispatch(ACTION_GET_LIST(10, 0))
+        } catch (error) {
+            console.error('Erro ao excluir o post:', error);
+        }
+    };
+};
