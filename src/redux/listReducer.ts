@@ -1,4 +1,4 @@
-import { SET_LIST, SET_NAME, SET_PAGINATION } from "@/actions/constants";
+import { SET_CLEAR_STATE, SET_LIST, SET_NAME, SET_PAGINATION } from "@/actions/constants";
 import { IActionReducer } from "@/interfaces/IActionReducer";
 import { IListState } from "@/interfaces/IListState";
 
@@ -24,6 +24,13 @@ const listReducer = (state = initialState, action: IActionReducer) => {
             return {
                 ...state,
                 pagination: action.payload,
+            };
+        case SET_CLEAR_STATE:
+            return {
+                ...state,
+                list: [],
+                name: '',
+                pagination: {},
             };
         default:
             return state;
