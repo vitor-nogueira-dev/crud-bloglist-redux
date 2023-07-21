@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { PiNotePencilDuotone } from 'react-icons/pi';
 import { TbTrashXFilled } from 'react-icons/tb';
 
+import ModalDelete from './ModalDelete';
+import ModalEdit from './ModalEdit';
 
 import { IListState } from '@/interfaces/IListState';
 import { IPostCardProps } from '@/interfaces/IPostCardProps';
@@ -13,7 +15,8 @@ export default function PostCard({ title, username, content, created_datetime, i
     const initialLimit = 140;
 
     const [isExpanded, setIsExpanded] = useState(false);
-
+    const [modalShowDelete, setModalDelete] = useState(false)
+    const [modalShowEdit, setModalEdit] = useState(false)
     const [limit, _setLimit] = useState(initialLimit);
 
     const name = useSelector((state: IListState) => state.name);
@@ -26,22 +29,32 @@ export default function PostCard({ title, username, content, created_datetime, i
 
     return (
         <div className=' border border-[#999999] w-[752px] h-[316px] flex flex-col items-center bg-[#ffffff] m-5 rounded-2xl overflow-hidden '>
-            {/* modal delete  */}
-            {/* modal edit */}
+            <ModalDelete
+                id={id}
+                show={modalShowDelete}
+                onHide={() => setModalDelete(false)}
+            />
+            <ModalEdit
+                id={id}
+                title={title}
+                content={content}
+                show={modalShowEdit}
+                onHide={() => setModalEdit(false)}
+            />
             <div className=' border w-[752px] min-h-[70px] flex items-center pl-6 bg-[#7695EC] rounded-t-2xl'>
                 <h1 className='text-[22px] font-bold text-white w-[80%]'>{title}</h1>
                 {(username === name) && (
                     <div className='flex justify-end w-[20%] pr-4 gap-4'>
                         <button
                             type="button"
-                            onClick={() => {}}
+                            onClick={() => setModalDelete(true)}
                             className="bg-transparent hover:text-[#7695EC] rounded-lg"
                         >
                             <TbTrashXFilled color='#ffffff' size={30} title='icon trash delete post' />
                         </button>
                         <button
                             type="button"
-                            onClick={() => {}}
+                            onClick={() => setModalEdit(true)}
                             className="bg-transparent"
                         >
                             <PiNotePencilDuotone color='#ffffff' size={30} title='icon pencil duotone edit post' />
