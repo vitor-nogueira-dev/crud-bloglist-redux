@@ -52,3 +52,17 @@ export const ACTION_CREATE_POST = (title: string, content: string, username: str
     };
 };
 
+export const ACTION_EDIT_POST = (id: number, title: string, content: string) => {
+    return async (dispatch: ThunkActionDispatch<any>) => {
+        try {
+            const body = {
+                title: title,
+                content: content,
+            };
+            await requestAPI(`${id}/`, 'PATCH', body);
+            dispatch(ACTION_GET_LIST(10, 0))
+        } catch (error) {
+            console.error('Erro ao editar o post:', error);
+        }
+    };
+};
