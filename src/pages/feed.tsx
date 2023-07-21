@@ -1,10 +1,13 @@
 'use client'
-import { ACTION_GET_LIST } from '@/actions/actions';
-import { IListState } from '@/interfaces/IListState';
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkActionDispatch } from 'redux-thunk';
 
+import PostCard from '@/components/PostCard';
+import PostForm from '@/components/PostForm';
+
+import { IListState } from '@/interfaces/IListState';
+import { ACTION_GET_LIST } from '@/actions/actions';
 
 export default function Pagination({ }) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -63,13 +66,14 @@ export default function Pagination({ }) {
     }, [currentPage, pagination]);
 
     return (
-        <div>
-            <ul>
-                {list.map((item: any) => (
-                    <li key={item.id}>{item.username}</li>
-                ))}
-            </ul>
-            <nav>
+        <section className='flex flex-col justify-center items-center bg-[#ffffff] border w-[800px] m-auto'>
+            <PostForm />
+
+            {list.map((item: any) => (
+                <PostCard key={item.id} title={item.title} username={item.username} content={item.content} created_datetime={item.created_datetime} id={item.id} />
+            ))}
+
+            {/* <nav>
                 <ul className="inline-flex -space-x-px text-sm">
                     <li>
                         <button
@@ -90,12 +94,12 @@ export default function Pagination({ }) {
                                     dispatch(ACTION_GET_LIST(limit, offset));
                                     setCurrentPage(page);
                                 }}
-                                className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 ${page === currentPage
-                                    ? "text-white font-bold bg-gray-600 "
+                                className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 ; border border-gray-300 ${page === currentPage
+                                    ? "text-white font-bold bg-gray-700 border-gray-400 "
                                     : "hover:bg-gray-100 hover:text-gray-700"
                                     }`}
                             >
-                                {page}
+                                {page} 
                             </a>
                         </li>
                     ))}
@@ -109,7 +113,7 @@ export default function Pagination({ }) {
                         </button>
                     </li>
                 </ul>
-            </nav>
-        </div>
+            </nav> */}
+        </section>
     );
 };
