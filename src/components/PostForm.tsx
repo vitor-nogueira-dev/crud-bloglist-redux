@@ -39,6 +39,7 @@ export default function PostForm({ username }: IPostFormProps) {
                     <div className="mb-6">
                         <label htmlFor="name" className="block mb-2 text-[16px] font-normal text-[#000000] leading-4">Title</label>
                         <input
+                            id='title'
                             type="text"
                             name="title"
                             value={title}
@@ -50,6 +51,7 @@ export default function PostForm({ username }: IPostFormProps) {
                     <div className="mb-6">
                         <label htmlFor="name" className="block mb-2 text-[16px] font-normal text-[#000000] leading-4">Content</label>
                         <textarea
+                            id='content'
                             name="content"
                             value={content}
                             onChange={({ target }) => setContent(target.value)}

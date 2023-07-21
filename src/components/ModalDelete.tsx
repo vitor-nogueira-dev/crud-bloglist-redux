@@ -29,10 +29,12 @@ export default function ModalDelete(props: React.JSX.IntrinsicAttributes & Omit<
                 <h4 className='font-bold text-xl'>Are you sure you want to delete this item?</h4>
                 <div className='w-full flex justify-end p-2 gap-4'>
                     <button type='button' className='w-[120px] h-[32px] border border-[#999999] rounded-md font-bold hover:shadow-xl transition-all' onClick={props.onHide}>Cancel</button>
-                    <button type='button' className='w-[120px] h-[32px] rounded-md font-bold text-white bg-[#FF5151]' onClick={()=> {
-                        handleDelete()
-                        props.onHide && props.onHide()
-                    }}>Delete</button>
+                    <button
+                        id='delete'
+                        type='button' className='w-[120px] h-[32px] rounded-md font-bold text-white bg-[#FF5151]' onClick={() => {
+                            handleDelete()
+                            props.onHide && props.onHide()
+                        }}>Delete</button>
                 </div>
             </Modal.Body>
         </Modal>

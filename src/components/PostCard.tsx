@@ -59,6 +59,7 @@ export default function PostCard({ title, username, content, created_datetime, i
                 {(username === name) && (
                     <div className='flex justify-end w-[20%] pr-4 gap-4'>
                         <button
+                            id='delete'
                             type="button"
                             onClick={() => setModalDelete(true)}
                             className="bg-transparent hover:text-[#7695EC] rounded-lg"
@@ -66,6 +67,7 @@ export default function PostCard({ title, username, content, created_datetime, i
                             <TbTrashXFilled color='#ffffff' size={30} title='icon trash delete post' />
                         </button>
                         <button
+                            id='edit'
                             type="button"
                             onClick={() => setModalEdit(true)}
                             className="bg-transparent"
