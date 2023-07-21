@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css'
 import '@/styles/logout.css'
+import 'aos/dist/aos.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
