@@ -27,10 +27,7 @@ const listReducer = (state = initialState, action: IActionReducer) => {
             };
         case SET_CLEAR_STATE:
             return {
-                ...state,
-                list: [],
-                name: '',
-                pagination: {},
+                ...initialState
             };
         default:
             return state;
