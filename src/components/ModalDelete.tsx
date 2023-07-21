@@ -24,6 +24,7 @@ export default function ModalDelete(props: React.JSX.IntrinsicAttributes & Omit<
             // size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            className='d-flex align-items-center justify-content-center'
         >
             <Modal.Body className='rounded-2xl'>
                 <h4 className='font-bold text-xl'>Are you sure you want to delete this item?</h4>
