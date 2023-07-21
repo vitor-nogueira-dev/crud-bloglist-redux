@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
 
-type Props = {}
-
-export default function PostForm({ }: Props) {
+export default function PostForm({  }) {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
+
     return (
-        <section className='h-screen border flex flex-col justify-start items-center bg-[#DDDDDD]'>
-            <div className=' border w-[800px] flex flex-col items-center bg-[#ffffff]'>
+        <section className='flex flex-col justify-start items-center bg-[#DDDDDD]'>
+            <div className='w-[780px] flex flex-col items-center bg-[#ffffff]'>
+
                 <div className=' border w-[800px] h-[80px] flex items-center pl-6 bg-[#7695EC]'>
                     <h1 className='text-[22px] font-bold text-white'>CodeLeap Network</h1>
                 </div>
-                <form className='border w-[753px] h-[334px]  m-6 border-[#999999] rounded-2xl p-6 flex flex-col justify-center gap-3'>
+
+                <form className="border h-[334px] w-[753px]   m-6 border-[#999999] rounded-2xl p-6 flex flex-col justify-center gap-3">
                     <h1 className='text-[22px] font-bold text-[#000000]'>What&apos;s on your mind?</h1>
                     <div className="mb-6">
                         <label htmlFor="name" className="block mb-2 text-[16px] font-normal text-[#000000] leading-4">Title</label>
@@ -39,7 +40,7 @@ export default function PostForm({ }: Props) {
                         <button
                             type="button"
                             disabled={(!title && !content)}
-                            onClick={() => { }}
+                            onClick={() => {}}
                             className={`font-bold w-[111px] h-[32px] ${(title && content) ? "bg-[#2a5deb]" : "active:bg-[#2a5deb] bg-[#7695EC]"} rounded-lg text-sm text-center capitalize text-white`}
                         >create</button>
                     </div>
