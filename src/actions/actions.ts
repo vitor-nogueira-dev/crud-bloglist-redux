@@ -1,6 +1,6 @@
 import { ThunkActionDispatch } from "redux-thunk";
 
-import { SET_CLEAR_STATE, SET_LIST, SET_NAME, SET_PAGINATION } from "./constants";
+import { SET_CLEAR_STATE, SET_LIST, SET_NAME, SET_PAGINATION, SET_LOADING } from "./constants";
 import requestAPI from "@/helpers/requestAPI";
 
 export const ACTION_SET_NAME = (name: string) => ({
@@ -22,6 +22,10 @@ export const ACTION_SET_CLEAR_STATE = () => ({
     type: SET_CLEAR_STATE,
 });
 
+export const ACTION_SET_LOADING = (loading: boolean) => ({
+    type: SET_LOADING,
+    payload: loading,
+});
 
 export const ACTION_GET_LIST = (
     limit: number,
