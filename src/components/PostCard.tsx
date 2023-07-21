@@ -42,6 +42,7 @@ export default function PostCard({ title, username, content, created_datetime, i
 
     return (
         <div className=' border border-[#999999] lg:w-[780px] md:w-[753px] w-[350px] h-[316px] flex flex-col items-center bg-[#ffffff] m-5 rounded-2xl overflow-hidden hover:shadow-xl transition-all' data-aos="fade-up"
+            data-aos-duration="800"
             data-aos-anchor-placement="center-bottom">
             <ModalDelete
                 id={id}
