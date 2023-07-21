@@ -1,6 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import { formatDistanceToNow, parseISO } from 'date-fns';
 
 import { PiNotePencilDuotone } from 'react-icons/pi';
 import { TbTrashXFilled } from 'react-icons/tb';
@@ -18,6 +19,7 @@ export default function PostCard({ title, username, content, created_datetime, i
     const [modalShowDelete, setModalDelete] = useState(false)
     const [modalShowEdit, setModalEdit] = useState(false)
     const [limit, _setLimit] = useState(initialLimit);
+    const [dateFormated, setDateFormated] = useState('')
 
     const name = useSelector((state: IListState) => state.name);
 
@@ -26,6 +28,17 @@ export default function PostCard({ title, username, content, created_datetime, i
     };
 
     const contentToShow = isExpanded ? content : content.substring(0, limit);
+
+    const handleGetTimeElapsed = useCallback(() => {
+        const parsedDate = parseISO(created_datetime)
+        const timeElapsed = formatDistanceToNow(parsedDate, { addSuffix: true })
+        return timeElapsed;
+    }, [created_datetime])
+
+    useEffect(() => {
+        const timeElapsed = handleGetTimeElapsed();
+        setDateFormated(timeElapsed)
+    }, [created_datetime, handleGetTimeElapsed])
 
     return (
         <div className=' border border-[#999999] w-[752px] h-[316px] flex flex-col items-center bg-[#ffffff] m-5 rounded-2xl overflow-hidden '>
@@ -65,7 +78,7 @@ export default function PostCard({ title, username, content, created_datetime, i
             <div className='m-2 p-6 flex flex-col justify-start gap-1 w-full'>
                 <div className='flex justify-between items-center w-full'>
                     <h1 className=' text-lg text-[#777777] m-0'>@{username}</h1>
-                    <p className=' text-lg text-[#777777] m-0'>{"date post"}</p>
+                    <p className=' text-lg text-[#777777] m-0'>{dateFormated}</p>
                 </div>
                 <div className='max-h-[140px] overflow-y-auto' >
                     <p className=' text-lg text-[#000000] font-normal m-0'>{contentToShow}</p>
