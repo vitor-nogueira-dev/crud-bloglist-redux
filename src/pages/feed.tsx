@@ -72,13 +72,12 @@ export default function Pagination({ }) {
             {list.map((item: any) => (
                 <PostCard key={item.id} title={item.title} username={item.username} content={item.content} created_datetime={item.created_datetime} id={item.id} />
             ))}
-
-            {/* <nav>
+            <nav className='max-w-[798px] overflow-x-auto flex items-center justify-center mb-4 flex-shrink-0'>
                 <ul className="inline-flex -space-x-px text-sm">
                     <li>
                         <button
                             onClick={handlePreviousPage}
-                            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border rounded-l-lg   bg-gray-800 border-gray-700 hover:bg-gray-700 hover:text-white disabled:opacity-50 "
+                            className="flex items-center justify-center px-3 h-8 leading-tight border rounded-l-lg  bg-[#7695EC] border-gray-700 hover:bg-[#547cea] text-white disabled:opacity-50  "
                             disabled={!pagination?.previous}
                         >
                             Previous
@@ -94,26 +93,25 @@ export default function Pagination({ }) {
                                     dispatch(ACTION_GET_LIST(limit, offset));
                                     setCurrentPage(page);
                                 }}
-                                className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 ; border border-gray-300 ${page === currentPage
-                                    ? "text-white font-bold bg-gray-700 border-gray-400 "
+                                className={`flex items-center justify-center px-3 h-8 w-12 leading-tight text-gray-500 border border-gray-300 ${page === currentPage
+                                    ? "bg-[#7695EC] text-white font-bold border-gray-400"
                                     : "hover:bg-gray-100 hover:text-gray-700"
                                     }`}
-                            >
-                                {page} 
+                            > {page}
                             </a>
                         </li>
                     ))}
                     <li>
                         <button
                             onClick={handleNextPage}
-                            className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border rounded-r-lg   bg-gray-800 border-gray-700 hover:bg-gray-700 hover:text-white disabled:opacity-50 "
+                            className="flex items-center justify-center px-3 h-8 leading-tight border rounded-r-lg  bg-[#7695EC] border-gray-700 hover:bg-[#547cea] text-white disabled:opacity-50 "
                             disabled={!pagination?.next}
                         >
                             Next
                         </button>
                     </li>
                 </ul>
-            </nav> */}
+            </nav>
         </section>
     );
 };
