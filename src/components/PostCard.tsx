@@ -41,7 +41,7 @@ export default function PostCard({ title, username, content, created_datetime, i
     }, [created_datetime, handleGetTimeElapsed])
 
     return (
-        <div className=' border border-[#999999] w-[752px] h-[316px] flex flex-col items-center bg-[#ffffff] m-5 rounded-2xl overflow-hidden hover:shadow-xl transition-all'>
+        <div className=' border border-[#999999] lg:w-[780px] md:w-[753px] w-[350px] h-[316px] flex flex-col items-center bg-[#ffffff] m-5 rounded-2xl overflow-hidden hover:shadow-xl transition-all'>
             <ModalDelete
                 id={id}
                 show={modalShowDelete}
@@ -54,7 +54,7 @@ export default function PostCard({ title, username, content, created_datetime, i
                 show={modalShowEdit}
                 onHide={() => setModalEdit(false)}
             />
-            <div className=' border w-[752px] min-h-[70px] flex items-center pl-6 bg-[#7695EC] rounded-t-2xl'>
+            <div className=' border lg:w-[780px] md:w-[753px] w-[360px]  min-h-[70px] flex items-center pl-6 bg-[#7695EC] rounded-t-2xl'>
                 <h1 className='text-[22px] font-bold text-white w-[80%]'>{title}</h1>
                 {(username === name) && (
                     <div className='flex justify-end w-[20%] pr-4 gap-4'>
@@ -77,7 +77,7 @@ export default function PostCard({ title, username, content, created_datetime, i
                     </div>
                 )}
             </div>
-            <div className='m-2 p-6 flex flex-col justify-start gap-1 w-full'>
+            <div className='m-2 p-6 flex flex-col justify-start gap-1 lg:w-[780px] md:w-[753px] w-[350px]'>
                 <div className='flex justify-between items-center w-full'>
                     <h1 className=' text-lg text-[#777777] m-0'>@{username}</h1>
                     <p className=' text-lg text-[#777777] m-0'>{dateFormated}</p>
