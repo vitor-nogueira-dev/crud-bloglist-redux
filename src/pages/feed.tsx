@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { use, useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkActionDispatch } from 'redux-thunk';
 
@@ -8,13 +8,18 @@ import PostForm from '@/components/PostForm';
 
 import { IListState } from '@/interfaces/IListState';
 import { ACTION_GET_LIST } from '@/actions/actions';
+import { useRouter } from 'next/router';
+
 
 export default function Pagination({ }) {
     const [currentPage, setCurrentPage] = useState(1);
 
     const dispatch = useDispatch() as ThunkActionDispatch<any>
+    const router = useRouter()
+    
     const list = useSelector((state: IListState) => state.list);
     const pagination = useSelector((state: IListState) => state.pagination);
+    const username = useSelector((state: IListState) => state.name);
 
     useEffect(() => {
         dispatch(ACTION_GET_LIST(10, 0));
@@ -65,9 +70,15 @@ export default function Pagination({ }) {
         return [];
     }, [currentPage, pagination]);
 
+    useEffect(() => {
+        if (username === '') {
+            router.push('/')
+        }
+    }, [router, username])
+
     return (
         <section className='flex flex-col justify-center items-center bg-[#ffffff] border w-[800px] m-auto'>
-            <PostForm />
+            <PostForm username={username}/>
 
             {list.map((item: any) => (
                 <PostCard key={item.id} title={item.title} username={item.username} content={item.content} created_datetime={item.created_datetime} id={item.id} />
