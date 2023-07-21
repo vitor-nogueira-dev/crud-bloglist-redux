@@ -41,7 +41,7 @@ export default function PostCard({ title, username, content, created_datetime, i
     }, [created_datetime, handleGetTimeElapsed])
 
     return (
-        <div className=' border border-[#999999] w-[752px] h-[316px] flex flex-col items-center bg-[#ffffff] m-5 rounded-2xl overflow-hidden '>
+        <div className=' border border-[#999999] w-[752px] h-[316px] flex flex-col items-center bg-[#ffffff] m-5 rounded-2xl overflow-hidden hover:shadow-xl transition-all'>
             <ModalDelete
                 id={id}
                 show={modalShowDelete}
