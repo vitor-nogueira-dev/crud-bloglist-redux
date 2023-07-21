@@ -1,4 +1,4 @@
-import { ACTION_SET_NAME } from '@/actions/actions'
+import { ACTION_SET_LOADING, ACTION_SET_NAME } from '@/actions/actions'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -16,6 +16,7 @@ export default function Signup({ }: Props) {
         e.preventDefault()
         dispatch(ACTION_SET_NAME(name))
         setName('')
+        dispatch(ACTION_SET_LOADING(true))
         router.push('/feed')
     }
 

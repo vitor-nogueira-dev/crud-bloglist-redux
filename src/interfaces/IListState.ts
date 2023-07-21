@@ -3,4 +3,5 @@ export
     list: string[];
     name: string;
     pagination: any;
+    loading: boolean;
 }
