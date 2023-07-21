@@ -1,7 +1,8 @@
 import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import listReducer from './listReducer';
 import { composeWithDevTools } from '@redux-devtools/extension';
+
+import listReducer from './listReducer';
 
 const store = createStore(
     listReducer,
