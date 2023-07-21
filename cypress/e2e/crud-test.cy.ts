@@ -40,4 +40,19 @@ describe('CRUD Test', () => {
     cy.contains('Post Test');
     cy.contains('Content Test');
   });
+
+  it('should edit a post and save the edition', () => {
+    cy.get('#name').type('User Test');
+    cy.get('button[type="button"]').should('be.enabled').click();
+    cy.url().should('include', '/feed');
+    cy.contains('Welcome back, User Test :)');
+    cy.contains('Post Test');
+    cy.contains('Content Test');
+    cy.get('#edit').click().wait(1000);
+    cy.get('.modal-body  #title').clear().type('Editing Title Test');
+    cy.get('.modal-body  #content').clear().type('Editing Content Test');
+    cy.get('.modal-body  #save').click().wait(1000);
+    cy.contains('Editing Title Test');
+    cy.contains('Editing Content Test');
+  });
 });
