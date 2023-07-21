@@ -1,8 +1,9 @@
 import { ACTION_SET_NAME } from '@/actions/actions'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { ThunkActionDispatch } from 'redux-thunk'
+import AOS from 'aos';
 
 type Props = {}
 
@@ -17,8 +18,13 @@ export default function Signup({ }: Props) {
         setName('')
         router.push('/feed')
     }
+
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
-        <section className='bg-[#DDDDDD] h-screen m-auto border flex items-center justify-center'>
+        <section className='bg-[#DDDDDD] h-screen m-auto border flex items-center justify-center' data-aos="flip-right">
             <form className='bg-[#ffffff] w-[320px] lg:w-[500px] md:w-[500px] h-[230px] rounded-[16px] flex flex-col justify-evenly border border-[#CCCCCC]
              p-6 py-10 shadow-md'>
                 <h1 className='text-xl font-bold leading-none text-[#000000] md:text-2xl lg:text-2xl mb-4'>Welcome to CodeLeap network!</h1>

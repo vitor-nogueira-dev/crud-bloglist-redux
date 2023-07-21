@@ -33,7 +33,7 @@ export default function PostForm({ username }: IPostFormProps) {
 
     return (
         <section className='flex flex-col justify-start items-center bg-[#DDDDDD]'>
-            <div className='lg:w-[780px] md:w-[780px] w-[350px] flex flex-col items-center bg-[#ffffff]'>
+            <div className='lg:w-[778px] md:w-[778px] w-[350px] flex flex-col items-center bg-[#ffffff]'>
                 <div className='lg:w-[800px] md:w-[780px] w-[350px] h-[80px] flex justify-between items-center pl-6 bg-[#7695EC] '>
                     <h1 className='lg:text-[22px] md:text-[22px] text-[18px] font-bold text-white'>CodeLeap Network <br/>
                     <span className='mr-4 lg:text-[14px] md:text-[14px] text-[12px] font-bold text-white'>Welcome back, {username} :)</span></h1>
@@ -48,7 +48,7 @@ export default function PostForm({ username }: IPostFormProps) {
                     </div>
                 </div>
 
-                <form className="border h-[334px] lg:w-[753px] md:w-[753px] w-[350px] m-3 border-[#999999] rounded-2xl p-3 lg:p-6 md:p-6 flex flex-col justify-center gap-3 hover:shadow-xl transition-all">
+                <form className="border h-[334px] lg:w-[753px] md:w-[753px] w-[350px] m-3 border-[#999999] rounded-2xl p-3 lg:p-6 md:p-6 flex flex-col justify-center gap-3 hover:shadow-xl transition-all" data-aos="fade-right">
                     <h1 className='text-[22px] font-bold text-[#000000]'>What&apos;s on your mind?</h1>
                     <div className="mb-6">
                         <label htmlFor="name" className="block mb-2 text-[16px] font-normal text-[#000000] leading-4">Title</label>

@@ -26,7 +26,6 @@ export default function ModalEdit(props: React.JSX.IntrinsicAttributes & Omit<Om
     }
 
     return (
-        <div className='border '>
             <Modal
                 {...props}
                 size="lg"
@@ -75,6 +74,5 @@ export default function ModalEdit(props: React.JSX.IntrinsicAttributes & Omit<Om
                     </div>
                 </Modal.Body>
             </Modal>
-        </div>
     )
 }
