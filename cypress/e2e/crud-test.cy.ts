@@ -68,4 +68,12 @@ describe('CRUD Test', () => {
     cy.contains('Editing Title Test').should('not.exist');
     cy.contains('Editing Content Test').should('not.exist');
   });
+  it('should button logout', () => {
+    cy.get('#name').type('User Test');
+    cy.get('button[type="button"]').should('be.enabled').click();
+    cy.url().should('include', '/feed');
+    cy.contains('Welcome back, User Test :)');
+    cy.get('.btn-logout').click().wait(1000);
+    cy.contains('Welcome to CodeLeap network!');
+  })
 });
