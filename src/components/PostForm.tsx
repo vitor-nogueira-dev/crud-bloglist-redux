@@ -4,7 +4,8 @@ import { ThunkActionDispatch } from 'redux-thunk'
 import { useRouter } from 'next/router'
 
 import { IPostFormProps } from '@/interfaces/IPostFormProps'
-import { ACTION_CREATE_POST } from '@/actions/actions'
+import { ACTION_CREATE_POST, ACTION_SET_CLEAR_STATE } from '@/actions/actions'
+
 
 export default function PostForm({ username }: IPostFormProps) {
     const [title, setTitle] = useState('')
@@ -30,8 +31,18 @@ export default function PostForm({ username }: IPostFormProps) {
             <div className='w-[780px] flex flex-col items-center bg-[#ffffff]'>
 
                 <div className=' w-[800px] h-[80px] flex justify-between items-center pl-6 bg-[#7695EC] '>
-                    <h1 className='text-[22px] font-bold text-white'>CodeLeap Network</h1>
-                    <span className='mr-4 text-[18px] font-bold text-white'>Welcome back, {username} :)</span>
+                    <h1 className='text-[22px] font-bold text-white'>CodeLeap Network <br/>
+                    <span className='mr-4 text-[14px] font-bold text-white'>Welcome back, {username} :)</span></h1>
+                    {/* <span className='mr-4 text-[18px] font-bold text-white'>Welcome back, {username} :)</span> */}
+                    <div className='w-[140px] flex items-center p-1'>
+                        
+                        <button onClick={() => {}}  className="btn-logout">
+
+                            <div className="content-logout"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+
+                            <div className="text-logout">Logout</div>
+                        </button>
+                    </div>
                 </div>
 
                 <form className="border h-[334px] w-[753px]   m-6 border-[#999999] rounded-2xl p-6 flex flex-col justify-center gap-3 hover:shadow-xl transition-all">
