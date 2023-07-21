@@ -55,4 +55,17 @@ describe('CRUD Test', () => {
     cy.contains('Editing Title Test');
     cy.contains('Editing Content Test');
   });
+
+  it('should delete a post', () => {
+    cy.get('#name').type('User Test');
+    cy.get('button[type="button"]').should('be.enabled').click();
+    cy.url().should('include', '/feed');
+    cy.contains('Welcome back, User Test :)');
+    cy.contains('Editing Title Test');
+    cy.contains('Editing Content Test');
+    cy.get('#delete').click().wait(1000);
+    cy.get('.modal-body  #delete').click().wait(1000);
+    cy.contains('Editing Title Test').should('not.exist');
+    cy.contains('Editing Content Test').should('not.exist');
+  });
 });
