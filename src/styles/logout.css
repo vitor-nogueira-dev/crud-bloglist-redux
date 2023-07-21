@@ -63,3 +63,14 @@
 .btn-logout:active {
   transform: translate(2px, 2px);
 }
+
+@media (max-width: 768px) {
+  .btn-logout {
+    width: 30px;
+    height: 30px;
+  }
+
+  .text-logout {
+    font-size: 0.8em;
+  }
+}
