@@ -2,14 +2,13 @@
 import React, { use, useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkActionDispatch } from 'redux-thunk';
+import { useRouter } from 'next/router';
 
 import PostCard from '@/components/PostCard';
 import PostForm from '@/components/PostForm';
 
 import { IListState } from '@/interfaces/IListState';
 import { ACTION_GET_LIST } from '@/actions/actions';
-import { useRouter } from 'next/router';
-
 
 export default function Pagination({ }) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -22,9 +21,10 @@ export default function Pagination({ }) {
     const username = useSelector((state: IListState) => state.name);
 
     useEffect(() => {
+        if (username === '') return;
         dispatch(ACTION_GET_LIST(10, 0));
         setCurrentPage(1);
-    }, [dispatch]);
+    }, [dispatch, username]);
 
     const handleNextPage = () => {
         if (pagination && pagination.next) {
@@ -43,7 +43,6 @@ export default function Pagination({ }) {
             const offset = parseInt(url.searchParams.get("offset") || "0", 10);
             dispatch(ACTION_GET_LIST(limit, offset));
             setCurrentPage(currentPage - 1);
-
         }
     };
 
