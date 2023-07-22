@@ -1,15 +1,16 @@
 import React from 'react';
 
 interface CustomButtonProps {
-    onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
     disabled?: boolean;
     variant: 'primary' | 'secondary' | 'success' | 'danger';
     children: React.ReactNode;
     margin?: boolean;
     id?: string;
+    type?: 'button' | 'submit' 
 }
 
-export default function CustomButton({ onClick, disabled, variant, children, margin, id }: CustomButtonProps) {
+export default function CustomButton({ onClick, disabled, variant, children, margin, id, type = 'button' }: CustomButtonProps) {
     const getButtonStyles = (): string => {
         switch (variant) {
             case 'primary':
@@ -27,7 +28,7 @@ export default function CustomButton({ onClick, disabled, variant, children, mar
 
     return (
         <button
-            type="button"
+            type={type}
             id={id}
             onClick={onClick}
             disabled={disabled}
