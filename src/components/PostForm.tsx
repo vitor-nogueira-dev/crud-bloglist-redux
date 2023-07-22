@@ -77,12 +77,6 @@ export default function PostForm({ username }: IPostFormProps) {
                         />
                     </div>
                     <div className='flex justify-end w-full'>
-                        {/* <button
-                            type="button"
-                            disabled={!(title && content)}
-                            onClick={handleSave}
-                            className={`font-bold w-[111px] h-[32px] hover:shadow-xl transition-all ${(title && content) ? "bg-[#2a5deb]" : "active:bg-[#2a5deb] bg-[#7695EC]"} rounded-lg text-sm text-center capitalize text-white`}
-                        >create</button> */}
                          <CustomButton onClick={handleSave} disabled={!(title && content)} variant="primary" margin>
                         create
                     </CustomButton>
