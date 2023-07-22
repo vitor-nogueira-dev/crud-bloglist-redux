@@ -30,13 +30,18 @@ export default function ModalDelete(props: React.JSX.IntrinsicAttributes & Omit<
             <Modal.Body className='rounded-2xl'>
                 <h4 className='font-bold text-xl'>Are you sure you want to delete this item?</h4>
                 <div className='w-full flex justify-end p-2 gap-4'>
-                    <CustomButton onClick={props.onHide || (() => { })} variant="secondary">
+                    <CustomButton
+                        onClick={props.onHide || (() => { })}
+                        variant="secondary">
                         Cancel
                     </CustomButton>
-                    <CustomButton onClick={() => {
-                        handleDelete();
-                        props.onHide && props.onHide();
-                    }} variant="danger">
+                    <CustomButton
+                        onClick={() => {
+                            handleDelete();
+                            props.onHide && props.onHide();
+                        }}
+                        variant="danger"
+                        id='delete'>
                         Delete
                     </CustomButton>
                 </div>
