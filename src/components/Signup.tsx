@@ -4,10 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { ThunkActionDispatch } from 'redux-thunk'
 import AOS from 'aos';
+import CustomButton from './CustomButton'
 
-type Props = {}
-
-export default function Signup({ }: Props) {
+export default function Signup({ }) {
     const [name, setName] = useState('')
     const dispatch = useDispatch() as ThunkActionDispatch<any>
     const router = useRouter()
@@ -41,12 +40,9 @@ export default function Signup({ }: Props) {
                     />
                 </div>
                 <div className='flex justify-end w-full'>
-                    <button
-                        type="button"
-                        disabled={!name}
-                        onClick={handleClick}
-                        className={`font-bold w-[111px] h-[32px] ${name ? "bg-[#2a5deb]" : "active:bg-[#2a5deb] bg-[#7695EC]"} rounded-lg text-sm text-center uppercase text-white`}
-                    >enter</button>
+                    <CustomButton onClick={handleClick} disabled={!name} variant="primary">
+                        enter
+                    </CustomButton>
                 </div>
             </form>
         </section>
