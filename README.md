@@ -5,7 +5,7 @@
 > This is a project to test technical skills in a job interview. This project is a simple crud of blog posts, where you can create, read, update and delete posts.
 
 ### Getting Started 🌐
-Visit the link to use the blog list: [BlogList](https://crud-bloglist-redux.vercel.app/)
+Visit the link to use the blog list: [BlogList]((https://bloglist-vn.vercel.app/))
 
 ### Usage 💻
 To use the project, you need just enter your name and click in the button to enter in the blog list. In the blog list, you can create, read, update and delete your posts.
