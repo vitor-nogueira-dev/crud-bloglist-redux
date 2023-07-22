@@ -6,6 +6,7 @@ import Modal, { ModalProps } from 'react-bootstrap/Modal';
 import { Omit, BsPrefixProps } from 'react-bootstrap/esm/helpers';
 
 import { ACTION_DELETE_POST } from '@/actions/actions';
+import CustomButton from './CustomButton';
 
 export default function ModalDelete(props: React.JSX.IntrinsicAttributes & Omit<Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & { ref?: ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined; }, BsPrefixProps<"div"> & ModalProps> & BsPrefixProps<"div"> & ModalProps & { children?: React.ReactNode; }) {
 
@@ -29,13 +30,15 @@ export default function ModalDelete(props: React.JSX.IntrinsicAttributes & Omit<
             <Modal.Body className='rounded-2xl'>
                 <h4 className='font-bold text-xl'>Are you sure you want to delete this item?</h4>
                 <div className='w-full flex justify-end p-2 gap-4'>
-                    <button type='button' className='w-[120px] h-[32px] border border-[#999999] rounded-md font-bold hover:shadow-xl transition-all' onClick={props.onHide}>Cancel</button>
-                    <button
-                        id='delete'
-                        type='button' className='w-[120px] h-[32px] rounded-md font-bold text-white bg-[#FF5151]' onClick={() => {
-                            handleDelete()
-                            props.onHide && props.onHide()
-                        }}>Delete</button>
+                    <CustomButton onClick={props.onHide || (() => { })} variant="secondary">
+                        Cancel
+                    </CustomButton>
+                    <CustomButton onClick={() => {
+                        handleDelete();
+                        props.onHide && props.onHide();
+                    }} variant="danger">
+                        Delete
+                    </CustomButton>
                 </div>
             </Modal.Body>
         </Modal>
