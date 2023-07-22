@@ -11,7 +11,7 @@ export default function Signup({ }) {
     const dispatch = useDispatch() as ThunkActionDispatch<any>
     const router = useRouter()
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         dispatch(ACTION_SET_NAME(name))
         setName('')
@@ -26,7 +26,7 @@ export default function Signup({ }) {
     return (
         <section className='bg-[#DDDDDD] h-screen m-auto border flex items-center justify-center' data-aos="flip-right" data-aos-duration="1000">
             <form className='bg-[#ffffff] w-[320px] lg:w-[500px] md:w-[500px] h-[230px] rounded-[16px] flex flex-col justify-evenly border border-[#CCCCCC]
-             p-6 py-10 shadow-md'>
+             p-6 py-10 shadow-md' onSubmit={handleClick}>
                 <h1 className='text-xl font-bold leading-none text-[#000000] md:text-2xl lg:text-2xl mb-4'>Welcome to CodeLeap network!</h1>
                 <div className="mb-6">
                     <label htmlFor="name" className="block mb-2 text-[16px] font-normal text-[#000000] leading-4">Please enter your username</label>
@@ -40,7 +40,7 @@ export default function Signup({ }) {
                     />
                 </div>
                 <div className='flex justify-end w-full'>
-                    <CustomButton onClick={handleClick} disabled={!name} variant="primary">
+                    <CustomButton type='submit' disabled={!name} variant="primary">
                         enter
                     </CustomButton>
                 </div>
