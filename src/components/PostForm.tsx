@@ -35,7 +35,7 @@ export default function PostForm({ username }: IPostFormProps) {
     return (
         <section className='flex flex-col justify-start items-center bg-[#DDDDDD]'>
             <div className='lg:w-[778px] md:w-[778px] w-[350px] flex flex-col items-center bg-[#ffffff]'>
-                <div className='lg:w-[800px] md:w-[780px] w-[350px] h-[80px] flex justify-between items-center pl-6 bg-[#7695EC] '>
+                <div className='lg:w-[800px] md:w-[780px] w-[350px] h-[80px] flex justify-between items-center pl-6 bg-[#7695EC] -mt-1'>
                     <h1 className='lg:text-[22px] md:text-[22px] text-[18px] font-bold text-white'>CodeLeap Network <br/>
                     <span className='mr-4 lg:text-[14px] md:text-[14px] text-[12px] font-bold text-white'>Welcome back, {username} :)</span></h1>
                     <div className='lg:w-[140px] md:w-[140px] w-[100px] flex items-center p-1 '>
