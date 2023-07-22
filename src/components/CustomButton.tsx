@@ -5,10 +5,11 @@ interface CustomButtonProps {
     disabled?: boolean;
     variant: 'primary' | 'secondary' | 'success' | 'danger';
     children: React.ReactNode;
-    margin?: boolean
+    margin?: boolean;
+    id?: string;
 }
 
-export default function CustomButton({ onClick, disabled, variant, children, margin }: CustomButtonProps) {
+export default function CustomButton({ onClick, disabled, variant, children, margin, id }: CustomButtonProps) {
     const getButtonStyles = (): string => {
         switch (variant) {
             case 'primary':
@@ -27,6 +28,7 @@ export default function CustomButton({ onClick, disabled, variant, children, mar
     return (
         <button
             type="button"
+            id={id}
             onClick={onClick}
             disabled={disabled}
             className={getButtonStyles()}

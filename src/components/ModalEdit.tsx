@@ -63,13 +63,20 @@ export default function ModalEdit(props: React.JSX.IntrinsicAttributes & Omit<Om
                     </div>
                 </form>
                 <div className='w-[92%] lg:w-[100%] flex justify-center lg:justify-end md:justify-end gap-4'>
-                    <CustomButton onClick={props.onHide || (() => { })} variant="secondary">
+                    <CustomButton
+                        onClick={props.onHide || (() => { })}
+                        variant="secondary"
+                        id='cancel'
+                    >
                         Cancel
                     </CustomButton>
-                    <CustomButton onClick={async () => {
-                        props.onHide && props.onHide();
-                        await handleSave();
-                    }} variant="success">
+                    <CustomButton
+                        onClick={async () => {
+                            props.onHide && props.onHide();
+                            await handleSave();
+                        }}
+                        variant="success"
+                        id='save'>
                         Save
                     </CustomButton>
                 </div>
