@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 
 import { IPostFormProps } from '@/interfaces/IPostFormProps'
 import { ACTION_CREATE_POST, ACTION_SET_CLEAR_STATE } from '@/actions/actions'
+import CustomButton from './CustomButton'
 
 
 export default function PostForm({ username }: IPostFormProps) {
@@ -76,12 +77,15 @@ export default function PostForm({ username }: IPostFormProps) {
                         />
                     </div>
                     <div className='flex justify-end w-full'>
-                        <button
+                        {/* <button
                             type="button"
-                            disabled={(!title && !content)}
+                            disabled={!(title && content)}
                             onClick={handleSave}
                             className={`font-bold w-[111px] h-[32px] hover:shadow-xl transition-all ${(title && content) ? "bg-[#2a5deb]" : "active:bg-[#2a5deb] bg-[#7695EC]"} rounded-lg text-sm text-center capitalize text-white`}
-                        >create</button>
+                        >create</button> */}
+                         <CustomButton onClick={handleSave} disabled={!(title && content)} variant="primary" margin>
+                        create
+                    </CustomButton>
                     </div>
                 </form>
             </div>
