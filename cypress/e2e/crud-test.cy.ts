@@ -1,7 +1,7 @@
 
 describe('CRUD Test', () => {
   beforeEach(() => {
-    cy.visit('https://crud-bloglist-redux.vercel.app/').wait(1000);
+    cy.visit('https://bloglist-vn.vercel.app/').wait(1000);
   });
 
   it('should disable button when name is not entered', () => {
