@@ -38,6 +38,7 @@ npm run cypress:open
 This project was developed with the following technologies: <br/>
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)&nbsp; <br/>
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)&nbsp; <br/>
+![NextJs](https://img.shields.io/badge/NextJs-000000?style=for-the-badge&logo=next.js&logoColor=white)&nbsp; <br/>
 ![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)&nbsp; <br/>
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)&nbsp; <br/>
 ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)&nbsp; <br/>
