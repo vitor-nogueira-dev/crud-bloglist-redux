@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import Modal, { ModalProps } from 'react-bootstrap/Modal';
 import { Omit, BsPrefixProps } from 'react-bootstrap/esm/helpers';
 
-import { ACTION_DELETE_POST } from '@/actions/actions';
+import { ACTION_MANAGE_POST } from '@/actions/actions';
 import CustomButton from './CustomButton';
 
 export default function ModalDelete(props: React.JSX.IntrinsicAttributes & Omit<Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & { ref?: ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined; }, BsPrefixProps<"div"> & ModalProps> & BsPrefixProps<"div"> & ModalProps & { children?: React.ReactNode; }) {
@@ -14,7 +14,7 @@ export default function ModalDelete(props: React.JSX.IntrinsicAttributes & Omit<
 
     const handleDelete = async () => {
         try {
-            dispatch(ACTION_DELETE_POST(props.id))
+            dispatch(ACTION_MANAGE_POST('delete', props.id))
         } catch (error) {
             console.error(error)
         }

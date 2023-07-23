@@ -5,7 +5,7 @@ import { ThunkActionDispatch } from 'redux-thunk';
 import Modal, { ModalProps } from 'react-bootstrap/Modal';
 import { Omit, BsPrefixProps } from 'react-bootstrap/esm/helpers';
 
-import { ACTION_EDIT_POST } from '@/actions/actions';
+import { ACTION_MANAGE_POST } from '@/actions/actions';
 import CustomButton from './CustomButton';
 
 export default function ModalEdit(props: React.JSX.IntrinsicAttributes & Omit<Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & { ref?: ((instance: HTMLDivElement | null) => void) | React.RefObject<HTMLDivElement> | null | undefined; }, BsPrefixProps<"div"> & ModalProps> & BsPrefixProps<"div"> & ModalProps & { children?: React.ReactNode; }) {
@@ -17,7 +17,7 @@ export default function ModalEdit(props: React.JSX.IntrinsicAttributes & Omit<Om
 
     const handleSave = async () => {
         try {
-            dispatch(ACTION_EDIT_POST(props.id, title, content))
+            dispatch(ACTION_MANAGE_POST('edit', props.id, title, content))
         } catch (error) {
             console.error(error)
         } finally {

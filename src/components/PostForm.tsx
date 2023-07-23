@@ -4,7 +4,7 @@ import { ThunkActionDispatch } from 'redux-thunk'
 import { useRouter } from 'next/router'
 
 import { IPostFormProps } from '@/interfaces/IPostFormProps'
-import { ACTION_CREATE_POST, ACTION_SET_CLEAR_STATE } from '@/actions/actions'
+import { ACTION_SET_CLEAR_STATE, ACTION_MANAGE_POST } from '@/actions/actions'
 import CustomButton from './CustomButton'
 
 
@@ -18,7 +18,7 @@ export default function PostForm({ username }: IPostFormProps) {
     const handleSave = async () => {
         try {
             if (username === '') return router.push('/')
-            dispatch(ACTION_CREATE_POST(title, content, username))
+            dispatch(ACTION_MANAGE_POST('create', 0, title, content, username))
         } catch (error) {
             console.error(error)
         } finally {
@@ -36,11 +36,11 @@ export default function PostForm({ username }: IPostFormProps) {
         <section className='flex flex-col justify-start items-center bg-[#DDDDDD]'>
             <div className='lg:w-[778px] md:w-[778px] w-[350px] flex flex-col items-center bg-[#ffffff]'>
                 <div className='lg:w-[800px] md:w-[780px] w-[350px] h-[80px] flex justify-between items-center pl-6 bg-[#7695EC] -mt-1'>
-                    <h1 className='lg:text-[22px] md:text-[22px] text-[18px] font-bold text-white'>CodeLeap Network <br/>
-                    <span className='mr-4 lg:text-[14px] md:text-[14px] text-[12px] font-bold text-white'>Welcome back, {username} :)</span></h1>
+                    <h1 className='lg:text-[22px] md:text-[22px] text-[18px] font-bold text-white'>CodeLeap Network <br />
+                        <span className='mr-4 lg:text-[14px] md:text-[14px] text-[12px] font-bold text-white'>Welcome back, {username} :)</span></h1>
                     <div className='lg:w-[140px] md:w-[140px] w-[100px] flex items-center p-1 '>
-                        
-                        <button onClick={handleLogout}  className="btn-logout">
+
+                        <button onClick={handleLogout} className="btn-logout">
 
                             <div className="content-logout"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
 
@@ -77,9 +77,9 @@ export default function PostForm({ username }: IPostFormProps) {
                         />
                     </div>
                     <div className='flex justify-end w-full'>
-                         <CustomButton onClick={handleSave} disabled={!(title && content)} variant="primary" margin>
-                        create
-                    </CustomButton>
+                        <CustomButton onClick={handleSave} disabled={!(title && content)} variant="primary" margin>
+                            create
+                        </CustomButton>
                     </div>
                 </form>
             </div>
