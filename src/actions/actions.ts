@@ -27,61 +27,65 @@ export const ACTION_SET_LOADING = (loading: boolean) => ({
     payload: loading,
 });
 
-export const ACTION_GET_LIST = (
-    limit: number,
-    offset: number
+export const ACTION_GET_LIST = (limit: number, offset: number) => {
+    return async (dispatch: ThunkActionDispatch<any>) => {
+        try {
+            const data = await requestAPI(`?limit=${limit}&offset=${offset}`);
+            dispatch(ACTION_SET_LIST(data.results));
+            dispatch(
+                ACTION_SET_PAGINATION({
+                    results: data.results,
+                    count: data.count,
+                    next: data.next,
+                    previous: data.previous,
+                })
+            );
+        } catch (error) {
+            console.error('Error getting list:', error);
+        }
+    };
+};
+
+export const ACTION_MANAGE_POST = (
+    type: 'create' | 'edit' | 'delete',
+    id?: number,
+    title?: string,
+    content?: string,
+    username?: string
 ) => {
     return async (dispatch: ThunkActionDispatch<any>) => {
-        const data = await requestAPI(`?limit=${limit}&offset=${offset}`);
-        dispatch(ACTION_SET_LIST(data.results));
-        dispatch(ACTION_SET_PAGINATION({
-            results: data.results,
-            count: data.count,
-            next: data.next,
-            previous: data.previous,
-        }));
-    };
-};
-
-
-export const ACTION_CREATE_POST = (title: string, content: string, username: string) => {
-    return async (dispatch: ThunkActionDispatch<any>) => {
         try {
-            const body = {
-                title: title,
-                content: content,
-                username: username,
-            };
-            await requestAPI('', 'POST', body);
-            dispatch(ACTION_GET_LIST(10, 0))
-        } catch (error) {
-            console.error('Erro ao criar o post:', error);
-        }
-    };
-};
+            let requestPromises: Promise<any>[] = [];
+            switch (type) {
+                case 'create':
+                    const createBody = {
+                        title: title,
+                        content: content,
+                        username: username,
+                    };
+                    requestPromises.push(requestAPI('', 'POST', createBody));
+                    break;
+                case 'edit':
+                    if (!id) return;
+                    const editBody = {
+                        title: title,
+                        content: content,
+                    };
+                    requestPromises.push(requestAPI(`${id}/`, 'PATCH', editBody));
+                    break;
+                case 'delete':
+                    if (!id) return;
+                    requestPromises.push(requestAPI(`${id}/`, 'DELETE'));
+                    break;
+                default:
+                    return;
+            }
 
-export const ACTION_EDIT_POST = (id: number, title: string, content: string) => {
-    return async (dispatch: ThunkActionDispatch<any>) => {
-        try {
-            const body = {
-                title: title,
-                content: content,
-            };
-            await requestAPI(`${id}/`, 'PATCH', body);
-            dispatch(ACTION_GET_LIST(10, 0))
-        } catch (error) {
-            console.error('Erro ao editar o post:', error);
-        }
-    };
-};
+            await Promise.all(requestPromises);
 
-export const ACTION_DELETE_POST = (id: number) => {
-    return async (dispatch: ThunkActionDispatch<any>) => {
-        try {
-            await requestAPI(`${id}/`, 'DELETE');
-            dispatch(ACTION_GET_LIST(10, 0))
+            dispatch(ACTION_GET_LIST(10, 0));
         } catch (error) {
-            console.error('Erro ao excluir o post:', error);
+            console.error('Error managing post:', error);
         }
     };
 };
