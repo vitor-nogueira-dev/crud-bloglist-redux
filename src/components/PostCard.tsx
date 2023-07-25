@@ -85,7 +85,7 @@ export default function PostCard({ title, username, content, created_datetime, i
                     <p className=' text-lg text-[#777777] m-0'>{dateFormated}</p>
                 </div>
                 <div className='max-h-[140px] overflow-y-auto' >
-                    <p className=' text-lg text-[#000000] font-normal m-0'>{contentToShow}</p>
+                    <p className=' text-lg text-[#000000] font-normal m-0 break-words'>{contentToShow}</p>
                     {content.length > initialLimit && (
                         <button
                             type="button"
